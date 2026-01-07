@@ -1,0 +1,18 @@
+# Maven
+target/
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# IntelliJ
+.idea/
+*.iml
+
+# Playwright
+playwright-report/
+test-results/
+
+# OS
+.DS_Store
