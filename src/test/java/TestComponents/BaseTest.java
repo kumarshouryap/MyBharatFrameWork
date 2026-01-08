@@ -5,6 +5,7 @@ import org.testng.annotations.BeforeClass;
 
 import com.microsoft.playwright.*;
 
+import MybharatUtils.Log;
 import Pageobjects.LandingPage;
 
 public class BaseTest {
@@ -17,24 +18,35 @@ public class BaseTest {
 
     @BeforeClass
     public void initializeBrowser() {
-
+    	 Log.info("---------------Create Playwright instance ------------");
         playwright = Playwright.create();
+        
+      	 Log.info("---------------Launching Chromium browser with Chrome channel ------------");
 
         browser = playwright.chromium().launch(
                 new BrowserType.LaunchOptions()
                         .setChannel("chrome")
                         .setHeadless(false));
+        Log.info("---------------Browser Screen Size 1920, 1080 opening successfully ------------");
 
         context = browser.newContext(
                 new Browser.NewContextOptions()
                         .setViewportSize(1920, 1080));
-
+        
+        
+        Log.info("---------------Opening new Browser Page/Tab ------------");
         page = context.newPage();
+        
+        Log.info("---------------Create Landing Page Object Successfullay ------------");
+        
         landingPage = new LandingPage(page);
     }
 
     @AfterClass
     public void tearDown() {
+    	
+    	Log.info("---------------Close Playwright instance Successfullay ------------");
+    	
         playwright.close();
     }
 }

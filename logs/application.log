@@ -1,0 +1,7 @@
+2026-01-08 15:03:14 [main] INFO  Log - ---------------Create Playwright instance ------------
+2026-01-08 15:03:19 [main] INFO  Log - ---------------Launching Chromium browser with Chrome channel ------------
+2026-01-08 15:03:19 [main] INFO  Log - ---------------Browser Screen Size 1920, 1080 opening successfully ------------
+2026-01-08 15:03:20 [main] INFO  Log - ---------------Opening new Browser Page/Tab ------------
+2026-01-08 15:03:20 [main] INFO  Log - ---------------Create Landing Page Object Successfullay ------------
+2026-01-08 15:03:20 [main] INFO  Log - --------- open landing page sucessfullay ---------
+2026-01-08 15:03:25 [main] INFO  Log - ---------------Close Playwright instance Successfullay ------------
