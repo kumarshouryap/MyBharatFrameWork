@@ -49,6 +49,18 @@
         <!-- ❌ REMOVE PlaywrightAutomation dependency FOR NOW -->
         <!-- This dependency DOES NOT EXIST locally -->
 
+        <dependency>
+        	<groupId>MYBharat</groupId>
+        	<artifactId>PlaywrightAutomation</artifactId>
+        	<version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+<dependency>
+    <groupId>com.aventstack</groupId>
+    <artifactId>extentreports</artifactId>
+    <version>5.1.2</version>
+</dependency>
     </dependencies>
 
     <build>
