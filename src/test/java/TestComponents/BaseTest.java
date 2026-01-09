@@ -6,6 +6,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 
 import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentReporter;
 import com.microsoft.playwright.*;
 
@@ -21,6 +22,7 @@ public class BaseTest {
 	protected Page page;
 	protected LandingPage landingPage;
 	protected static ExtentReports extentreport;
+	protected static ExtentTest test;
 
 	@BeforeSuite
 

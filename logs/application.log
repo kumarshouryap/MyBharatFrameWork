@@ -12,3 +12,39 @@
 2026-01-08 21:00:18 [main] INFO  Log - ---------------Create Landing Page Object Successfullay ------------
 2026-01-08 21:00:18 [main] INFO  Log - --------- open landing page sucessfullay ---------
 2026-01-08 21:00:31 [main] INFO  Log - ---------------Close Playwright instance Successfullay ------------
+2026-01-09 15:00:29 [main] INFO  Log - ---------------Create Playwright instance ------------
+2026-01-09 15:00:41 [main] INFO  Log - ---------------Launching Chromium browser with Chrome channel ------------
+2026-01-09 15:00:41 [main] INFO  Log - ---------------Browser Screen Size 1920, 1080 opening successfully ------------
+2026-01-09 15:00:41 [main] INFO  Log - ---------------Opening new Browser Page/Tab ------------
+2026-01-09 15:00:41 [main] INFO  Log - ---------------Create Landing Page Object Successfullay ------------
+2026-01-09 15:00:41 [main] INFO  Log - --------- open landing page sucessfullay ---------
+2026-01-09 15:01:11 [main] INFO  Log - ---------------Close Playwright instance Successfullay ------------
+2026-01-09 15:05:56 [main] INFO  Log - ---------------Create Playwright instance ------------
+2026-01-09 15:06:04 [main] INFO  Log - ---------------Launching Chromium browser with Chrome channel ------------
+2026-01-09 15:06:04 [main] INFO  Log - ---------------Browser Screen Size 1920, 1080 opening successfully ------------
+2026-01-09 15:06:04 [main] INFO  Log - ---------------Opening new Browser Page/Tab ------------
+2026-01-09 15:06:04 [main] INFO  Log - ---------------Create Landing Page Object Successfullay ------------
+2026-01-09 15:06:04 [main] INFO  Log - --------- open landing page sucessfullay ---------
+2026-01-09 15:06:13 [main] INFO  Log - ---------------Close Playwright instance Successfullay ------------
+2026-01-09 15:07:11 [main] INFO  Log - ---------------Create Playwright instance ------------
+2026-01-09 15:07:19 [main] INFO  Log - ---------------Launching Chromium browser with Chrome channel ------------
+2026-01-09 15:07:19 [main] INFO  Log - ---------------Browser Screen Size 1920, 1080 opening successfully ------------
+2026-01-09 15:07:19 [main] INFO  Log - ---------------Opening new Browser Page/Tab ------------
+2026-01-09 15:07:19 [main] INFO  Log - ---------------Create Landing Page Object Successfullay ------------
+2026-01-09 15:07:19 [main] INFO  Log - --------- open landing page sucessfullay ---------
+2026-01-09 15:07:27 [main] INFO  Log - ---------------Close Playwright instance Successfullay ------------
+2026-01-09 16:56:27 [main] INFO  Log - ---------------Create Playwright instance ------------
+2026-01-09 17:15:58 [main] INFO  Log - ---------------Create Playwright instance ------------
+2026-01-09 17:16:32 [main] INFO  Log - ---------------Launching Chromium browser with Chrome channel ------------
+2026-01-09 17:16:33 [main] INFO  Log - ---------------Browser Screen Size 1920, 1080 opening successfully ------------
+2026-01-09 17:16:33 [main] INFO  Log - ---------------Opening new Browser Page/Tab ------------
+2026-01-09 17:16:33 [main] INFO  Log - ---------------Create Landing Page Object Successfullay ------------
+2026-01-09 17:16:33 [main] INFO  Log - --------- open landing page sucessfullay ---------
+2026-01-09 17:16:38 [main] INFO  Log - ---------------Close Playwright instance Successfullay ------------
+2026-01-09 17:18:18 [main] INFO  Log - ---------------Create Playwright instance ------------
+2026-01-09 17:18:26 [main] INFO  Log - ---------------Launching Chromium browser with Chrome channel ------------
+2026-01-09 17:18:26 [main] INFO  Log - ---------------Browser Screen Size 1920, 1080 opening successfully ------------
+2026-01-09 17:18:26 [main] INFO  Log - ---------------Opening new Browser Page/Tab ------------
+2026-01-09 17:18:27 [main] INFO  Log - ---------------Create Landing Page Object Successfullay ------------
+2026-01-09 17:18:27 [main] INFO  Log - --------- open landing page sucessfullay ---------
+2026-01-09 17:18:32 [main] INFO  Log - ---------------Close Playwright instance Successfullay ------------
