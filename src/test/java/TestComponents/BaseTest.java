@@ -1,6 +1,8 @@
 package TestComponents;
 
+import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
@@ -50,12 +52,34 @@ public class BaseTest {
 		landingPage = new LandingPage(page);
 	}
 
-	@AfterClass
+	// Flag to determine whether to close the browser after tests
+
+	private boolean shouldCloseBrowser = false;
+
+	// Runs after each test method
+
+	@AfterMethod
+	public void setFlagAfterTest(ITestResult result) {
+		if (result.getStatus() == ITestResult.SUCCESS) {
+			shouldCloseBrowser = true; // set true only if test passed
+		} else {
+			shouldCloseBrowser = false; // keep browser open on failure
+		}
+	}
+
+	// Runs once after all tests in the class
+	@AfterClass(alwaysRun = true)
 	public void tearDown() {
-
-		Log.info("---------------Close Playwright instance Successfullay ------------");
-
-		playwright.close();
+		if (shouldCloseBrowser) {
+			if (page != null)
+				page.close();
+			if (context != null)
+				context.close();
+			if (browser != null)
+				browser.close();
+			if (playwright != null)
+				playwright.close();
+		}
 	}
 
 	@AfterSuite

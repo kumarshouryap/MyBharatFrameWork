@@ -9,6 +9,7 @@
           <include name="tearDown"/>
           <include name="youthLandingPage"/>
           <include name="initializeBrowser"/>
+          <include name="setFlagAfterTest"/>
           <include name="SetupExtentReport"/>
         </methods>
       </class> <!-- YouthTest.Youth -->
