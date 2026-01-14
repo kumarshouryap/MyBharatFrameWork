@@ -1,40 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-01-11T13:27:25 IST" name="Default suite" finished-at="2026-01-11T13:27:56 IST" duration-ms="30294">
+  <suite started-at="2026-01-14T14:22:51 IST" name="Default suite" finished-at="2026-01-14T14:23:24 IST" duration-ms="33395">
     <groups>
     </groups>
-    <test started-at="2026-01-11T13:27:25 IST" name="Default test" finished-at="2026-01-11T13:27:56 IST" duration-ms="30294">
+    <test started-at="2026-01-14T14:22:51 IST" name="Default test" finished-at="2026-01-14T14:23:24 IST" duration-ms="33395">
       <class name="YouthTest.Youth">
-        <test-method is-config="true" signature="SetupExtentReport()[pri:0, instance:YouthTest.Youth@408d971b]" started-at="2026-01-11T13:27:25 IST" name="SetupExtentReport" finished-at="2026-01-11T13:27:25 IST" duration-ms="242" status="PASS">
+        <test-method is-config="true" signature="SetupExtentReport()[pri:0, instance:YouthTest.Youth@776aec5c]" started-at="2026-01-14T14:22:51 IST" name="SetupExtentReport" finished-at="2026-01-14T14:22:51 IST" duration-ms="253" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- SetupExtentReport -->
-        <test-method is-config="true" signature="initializeBrowser()[pri:0, instance:YouthTest.Youth@408d971b]" started-at="2026-01-11T13:27:25 IST" name="initializeBrowser" finished-at="2026-01-11T13:27:34 IST" duration-ms="8661" status="PASS">
+        <test-method is-config="true" signature="initializeBrowser()[pri:0, instance:YouthTest.Youth@776aec5c]" started-at="2026-01-14T14:22:51 IST" name="initializeBrowser" finished-at="2026-01-14T14:23:01 IST" duration-ms="9609" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initializeBrowser -->
-        <test-method signature="youthLandingPage()[pri:1, instance:YouthTest.Youth@408d971b]" started-at="2026-01-11T13:27:34 IST" name="youthLandingPage" finished-at="2026-01-11T13:27:55 IST" duration-ms="20845" status="PASS">
+        <test-method signature="youthLandingPage()[pri:1, instance:YouthTest.Youth@776aec5c]" started-at="2026-01-14T14:23:01 IST" name="youthLandingPage" finished-at="2026-01-14T14:23:08 IST" duration-ms="7281" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- youthLandingPage -->
-        <test-method is-config="true" signature="setFlagAfterTest(org.testng.ITestResult)[pri:0, instance:YouthTest.Youth@408d971b]" started-at="2026-01-11T13:27:55 IST" name="setFlagAfterTest" finished-at="2026-01-11T13:27:55 IST" duration-ms="3" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=youthLandingPage status=SUCCESS method=Youth.youthLandingPage()[pri:1, instance:YouthTest.Youth@408d971b] output={null}]]]>
-              </value>
-            </param>
-          </params>
+        <test-method signature="youthEOTPV()[pri:2, instance:YouthTest.Youth@776aec5c]" started-at="2026-01-14T14:23:08 IST" name="youthEOTPV" finished-at="2026-01-14T14:23:19 IST" duration-ms="11390" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setFlagAfterTest -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:YouthTest.Youth@408d971b]" started-at="2026-01-11T13:27:55 IST" name="tearDown" finished-at="2026-01-11T13:27:56 IST" duration-ms="742" status="PASS">
+        </test-method> <!-- youthEOTPV -->
+        <test-method signature="youthRegistrationFormFill()[pri:3, instance:YouthTest.Youth@776aec5c]" started-at="2026-01-14T14:23:19 IST" name="youthRegistrationFormFill" finished-at="2026-01-14T14:23:24 IST" duration-ms="5060" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="flushReport()[pri:0, instance:YouthTest.Youth@408d971b]" started-at="2026-01-11T13:27:56 IST" name="flushReport" finished-at="2026-01-11T13:27:56 IST" duration-ms="272" status="PASS">
+        </test-method> <!-- youthRegistrationFormFill -->
+        <test-method is-config="true" signature="flushReport()[pri:0, instance:YouthTest.Youth@776aec5c]" started-at="2026-01-14T14:23:24 IST" name="flushReport" finished-at="2026-01-14T14:29:32 IST" duration-ms="367048" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- flushReport -->

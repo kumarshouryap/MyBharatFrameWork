@@ -1,16 +1,19 @@
 package Mybharat.AbstractsComponents;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.Random;
-
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+import com.github.javafaker.Faker;
+import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+
 
 public class abstractComponents {
 
     protected Page page;
     private Properties properties;
+    Faker faker;
 
     public abstractComponents(Page page) {
         this.page = page;
@@ -47,5 +50,55 @@ public class abstractComponents {
         }
 
         return mobileNumber.toString(); // Return the complete 10-digit number
+        
+        
     }
+    
+ // Utility method for random drop-down selection
+    
+    public void selectRandomOption(Locator dropdown) {
+        int count = dropdown.locator("option").count();
+        if (count <= 1) {
+            throw new RuntimeException("Dropdown has no selectable options");
+        }
+
+        int randomIndex = new Random().nextInt(count - 1) + 1; // skip index 0
+        String value = dropdown.locator("option").nth(randomIndex).getAttribute("value");
+        dropdown.selectOption(value);
+    }
+
+    // Select radio button in group 
+    
+    public void selectRadioByValue(String name, String value) {
+        Locator radio = page.locator("input[type='radio'][name='" + name + "'][value='" + value + "']");
+        selectRadioButton(radio);
+    }
+    
+    // Generic method to select a radio button
+    
+    public void selectRadioButton(Locator radioButton) {
+        if (!radioButton.isVisible()) {
+            throw new RuntimeException("Radio button is not visible");
+        }
+        if (!radioButton.isEnabled()) {
+            throw new RuntimeException("Radio button is not enabled");
+        }
+
+        if (!radioButton.isChecked()) {
+            radioButton.check();   // Playwright-native way
+        }
+    }
+    
+    public void selectFirstFromTypeSearch(Page page, String inputLocator, String listBoxLocator, String triggerText) {
+
+        page.locator(inputLocator).click();
+        page.locator(inputLocator).fill(triggerText);
+
+        Locator listBox = page.locator(listBoxLocator);
+        listBox.waitFor();
+
+        listBox.locator("[role='option'], div").first().click();
+    }
+
 }
+

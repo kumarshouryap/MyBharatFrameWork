@@ -6,11 +6,10 @@
       <class name="YouthTest.Youth">
         <methods>
           <include name="flushReport"/>
-          <include name="tearDown"/>
-          <include name="youthLandingPage"/>
+          <include name="youthEOTPV"/>
           <include name="initializeBrowser"/>
-          <include name="setFlagAfterTest"/>
           <include name="SetupExtentReport"/>
+          <include name="youthRegistrationFormFill"/>
         </methods>
       </class> <!-- YouthTest.Youth -->
     </classes>

@@ -49,42 +49,17 @@ public class BaseTest {
 
 		Log.info("---------------Create Landing Page Object Successfullay ------------");
 
-		landingPage = new LandingPage(page);
+		
 	}
 
-	// Flag to determine whether to close the browser after tests
-
-	private boolean shouldCloseBrowser = false;
-
-	// Runs after each test method
-
-	@AfterMethod
-	public void setFlagAfterTest(ITestResult result) {
-		if (result.getStatus() == ITestResult.SUCCESS) {
-			shouldCloseBrowser = true; // set true only if test passed
-		} else {
-			shouldCloseBrowser = false; // keep browser open on failure
-		}
-	}
-
-	// Runs once after all tests in the class
-	@AfterClass(alwaysRun = true)
-	public void tearDown() {
-		if (shouldCloseBrowser) {
-			if (page != null)
-				page.close();
-			if (context != null)
-				context.close();
-			if (browser != null)
-				browser.close();
-			if (playwright != null)
-				playwright.close();
-		}
-	}
-
+	
 	@AfterSuite
 
 	public void flushReport() {
 		extentreport.flush();
+		
+		// Stop the browser for debug 
+		
+		 page.pause();
 	}
 }
