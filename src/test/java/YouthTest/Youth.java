@@ -5,7 +5,9 @@ import org.testng.annotations.Test;
 import MybharatUtils.Log;
 import MybharatUtils.TakeScreenShort;
 import Pageobjects.LandingPage;
+import Pageobjects.Loginyouth;
 import Pageobjects.YouthEmailMobOTPVerification;
+import Pageobjects.YouthProfile;
 import Pageobjects.YouthRegistrationPage;
 import TestComponents.BaseTest;
 
@@ -93,5 +95,48 @@ public class Youth extends BaseTest {
 		}
 		
 		
+	}
+	
+	@Test(priority =4)
+	
+	public void mybharatProfile() throws InterruptedException {
+		
+		// Extract email from profile and write to Excel
+		
+		test = extentreport.createTest("Extract Email form Profile and Write that email into Excel");
+		
+		YouthProfile mybharatProfileYouth = new YouthProfile(page);
+		mybharatProfileYouth.getemailfromprofile();
+		
+		// Take Screen Short
+		
+		TakeScreenShort.getScreenShort(page);
+		
+		// Make Extent Report
+		
+		String message1 = "Email extracted from profile and written to Excel successfully";
+				
+		if (message1.equals("Email extracted from profile and written to Excel successfully")) {
+			test.pass("Email extracted from profile and written to Excel successfully");
+		} else {
+			test.fail("Failed to extract email from profile and write to Excel");
+		}
+		
+		// Change Password Call 
+		
+		mybharatProfileYouth.changePassword();
+		
+		test = extentreport.createTest("Change Password Successfullay");
+		String  message2 = "You have successfully changed your password";
+		if(message2.equals("You have successfully changed your password")) {
+			test.pass("Password Changed Successfullay");
+			} else {	
+				test.fail("Password Change Failed");
+			}		
+	}
+	
+	public void loginYuth() {
+		Loginyouth signin = new Loginyouth(page);
+		signin.loginYouth();
 	}
 }

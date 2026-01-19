@@ -118,17 +118,18 @@ public class YouthEmailMobOTPVerification extends abstractComponents {
 
 		// Example text:
 		// "Your one-time password (OTP) for registering on MyBharat is 482913. This OTP
-		// is valid for 10 minutes."
-
 		// Extract only the numeric OTP value from the text
+		
 		String otp = otpText.split("\\.")[0] // Take part before first dot
 				.split(" is ")[1] // Take part after " is "
 				.trim(); // Remove extra spaces
 
 		// Print OTP in console for debugging
+		
 		System.out.println("OTP: " + otp);
 
 		// Close the Yopmail tab after reading OTP
+		
 		mailPage.close();
 
 		// Now you can use this OTP on your main application page:

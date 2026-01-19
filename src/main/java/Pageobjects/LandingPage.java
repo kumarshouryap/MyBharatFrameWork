@@ -10,6 +10,7 @@ public class LandingPage extends abstractComponents {
     }
 
     public void goTo() {
+    	
         page.navigate(getProperty("enviroment"));
     }
 }

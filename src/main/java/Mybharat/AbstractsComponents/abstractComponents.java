@@ -1,12 +1,23 @@
 package Mybharat.AbstractsComponents;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.Random;
+
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import com.github.javafaker.Faker;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.WaitForSelectorState;
+
+import java.io.File;
+import java.io.FileOutputStream;
 
 
 public class abstractComponents {
@@ -14,6 +25,8 @@ public class abstractComponents {
     protected Page page;
     private Properties properties;
     Faker faker;
+    
+    Locator locator;
 
     public abstractComponents(Page page) {
         this.page = page;
@@ -54,7 +67,7 @@ public class abstractComponents {
         
     }
     
- // Utility method for random drop-down selection
+ // random drop-down selection
     
     public void selectRandomOption(Locator dropdown) {
         int count = dropdown.locator("option").count();
@@ -99,6 +112,120 @@ public class abstractComponents {
 
         listBox.locator("[role='option'], div").first().click();
     }
+    
+    public static void writeEmailinExcel(String email) {
+        try {
+            File file = new File("UserDetails.xlsx");
+            Workbook workbook;
+            Sheet sheet;
+
+            if (file.exists()) {
+                // Open existing file
+                FileInputStream fis = new FileInputStream(file);
+                workbook = new XSSFWorkbook(fis);
+                sheet = workbook.getSheet("UserData");
+
+                if (sheet == null) {
+                    sheet = workbook.createSheet("UserData");
+                }
+                fis.close();
+            } else {
+                // Create new file
+                workbook = new XSSFWorkbook();
+                sheet = workbook.createSheet("UserData");
+
+                Row header = sheet.createRow(0);
+                header.createCell(0).setCellValue("Email");
+            }
+
+            // Find next empty row
+            int lastRow = sheet.getLastRowNum();
+            int nextRow = (lastRow == 0 && sheet.getRow(0) == null) ? 0 : lastRow + 1;
+
+            Row row = sheet.createRow(nextRow);
+            row.createCell(0).setCellValue(email);
+
+            FileOutputStream fos = new FileOutputStream(file);
+            workbook.write(fos);
+
+            fos.close();
+            workbook.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+	    
+
+    // Get Random Email from Excel using Faker and insert in the email filed 
+    
+    public static String getRandomEmailFromExcelUsingFaker() {
+        String path = "/UserDetails.xlsx";
+        String email = "";
+
+        try {
+            FileInputStream fis = new FileInputStream(path);
+            Workbook workbook = new XSSFWorkbook(fis);
+            Sheet sheet = workbook.getSheet("UserData");
+
+            int lastRow = sheet.getLastRowNum(); // excludes header
+
+            if (lastRow >= 1) {
+                Faker faker = new Faker();
+                int randomRow = faker.number().numberBetween(1, lastRow + 1);
+
+                Row row = sheet.getRow(randomRow);
+                if (row != null && row.getCell(0) != null) {
+                    email = row.getCell(0).getStringCellValue();
+                }
+            }
+
+            workbook.close();
+            fis.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return email;
+    }
+    
+    // For Global Wait for Click
+
+    public void globalWaitForClick(Locator locator) {
+        locator.waitFor(new Locator.WaitForOptions()
+                .setState(WaitForSelectorState.VISIBLE)
+                .setTimeout(60000));
+
+        locator.scrollIntoViewIfNeeded();
+        locator.click();
+    }
+
+    
+    // Global Wait for Fill
+    
+    public void globalWaitForFill(Locator locator, String value) {
+        locator.waitFor(new Locator.WaitForOptions()
+                .setState(WaitForSelectorState.VISIBLE)
+                .setTimeout(60000));
+
+        locator.scrollIntoViewIfNeeded();
+        locator.fill(value);
+    }
+
+
+    
+    // scroll the Element 
+    
+    public void scrollToElement(Locator locator) {
+        locator.scrollIntoViewIfNeeded();
+    }
+    
+    
+    // Scroll by mouse
+    
+    
 
 }
+    
 
