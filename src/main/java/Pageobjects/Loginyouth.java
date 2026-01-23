@@ -3,12 +3,15 @@ package Pageobjects;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.impl.Utils;
+import com.microsoft.playwright.options.WaitForSelectorState;
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import Mybharat.AbstractsComponents.abstractComponents;
 
 public class Loginyouth extends abstractComponents {
 	
 	private static final String ExcelUtils = null;
+	
 	Page page;
 	Locator signinlink;
 	Locator loginWithPassword;
@@ -41,17 +44,27 @@ public class Loginyouth extends abstractComponents {
 	
 	public void loginYouth() {
 		
-		String email = abstractComponents.getRandomEmailFromExcelUsingFaker();
-		String password = getProperty("password");  // already in abstractComponents
+		String email = abstractComponents.getRandomEmailFromExcelUsingFaker().trim();
+	    String password = getProperty("password").trim();
 
-		signinlink.click();
-		loginWithPassword.click();
+	    globalWaitForClick(signinlink);
+	    globalWaitForClick(loginWithPassword);
+	    
 
-		emailidinput.fill(email);
-		passwordinput.fill(password);
+	    globalWaitForFill(emailidinput, email);
+	    globalWaitForFill(passwordinput, password);
 
-		iconSenttoTermsOfUse.check();
-		signinbutton.click();
+	    if (!iconSenttoTermsOfUse.isChecked()) {
+	        iconSenttoTermsOfUse.check();
+	    }
+
+	    // Wait until button becomes enabled
+	    signinbutton.waitFor(new Locator.WaitForOptions()
+	            .setState(WaitForSelectorState.ATTACHED));
+
+	    assertThat(signinbutton).isEnabled();
+	    signinbutton.click();
+	}
 
 		
 		
@@ -59,4 +72,4 @@ public class Loginyouth extends abstractComponents {
 	
 	
 
-}
+

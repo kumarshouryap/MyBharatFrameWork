@@ -42,7 +42,11 @@ public class BaseTest {
 		browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setChannel("chrome").setHeadless(false));
 		Log.info("---------------Browser Screen Size 1920, 1080 opening successfully ------------");
 
-		context = browser.newContext(new Browser.NewContextOptions().setViewportSize(1920, 1080));
+		/*
+		 * context = browser.newContext(new
+		 * Browser.NewContextOptions().setViewportSize(1920, 1080));
+		 */
+		BrowserContext context = browser.newContext();
 
 		Log.info("---------------Opening new Browser Page/Tab ------------");
 		page = context.newPage();

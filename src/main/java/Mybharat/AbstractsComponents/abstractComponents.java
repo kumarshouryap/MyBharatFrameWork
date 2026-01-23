@@ -2,6 +2,7 @@ package Mybharat.AbstractsComponents;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Properties;
 import java.util.Random;
 
@@ -12,6 +13,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import com.github.javafaker.Faker;
+import com.microsoft.playwright.FileChooser;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.WaitForSelectorState;
@@ -113,24 +115,56 @@ public class abstractComponents {
         listBox.locator("[role='option'], div").first().click();
     }
     
+	/*
+	 * public static void writeEmailinExcel(String email) { try { // Use absolute or
+	 * project-relative path so you know exactly where file is File file = new
+	 * File(System.getProperty("user.dir") + "/UserDetails.xlsx");
+	 * 
+	 * Workbook workbook; Sheet sheet;
+	 * 
+	 * if (file.exists()) { try (FileInputStream fis = new FileInputStream(file)) {
+	 * workbook = new XSSFWorkbook(fis); } sheet = workbook.getSheet("UserData"); if
+	 * (sheet == null) { sheet = workbook.createSheet("UserData"); Row header =
+	 * sheet.createRow(0); header.createCell(0).setCellValue("Email"); } } else {
+	 * workbook = new XSSFWorkbook(); sheet = workbook.createSheet("UserData");
+	 * 
+	 * Row header = sheet.createRow(0); header.createCell(0).setCellValue("Email");
+	 * }
+	 * 
+	 * // Correct way to find next row int nextRow =
+	 * sheet.getPhysicalNumberOfRows(); Row row = sheet.createRow(nextRow);
+	 * row.createCell(0).setCellValue(email);
+	 * 
+	 * try (FileOutputStream fos = new FileOutputStream(file)) {
+	 * workbook.write(fos); fos.flush(); }
+	 * 
+	 * workbook.close(); System.out.println("Email written to: " +
+	 * file.getAbsolutePath());
+	 * 
+	 * } catch (Exception e) { e.printStackTrace(); } }
+	 */
+    
     public static void writeEmailinExcel(String email) {
         try {
-            File file = new File("UserDetails.xlsx");
+        	 File file = new File(System.getProperty("user.dir")
+                     + "/src/main/resources/UserDetails.xlsx");
+            
+
             Workbook workbook;
             Sheet sheet;
 
             if (file.exists()) {
-                // Open existing file
-                FileInputStream fis = new FileInputStream(file);
-                workbook = new XSSFWorkbook(fis);
+                try (FileInputStream fis = new FileInputStream(file)) {
+                    workbook = new XSSFWorkbook(fis);
+                }
                 sheet = workbook.getSheet("UserData");
 
                 if (sheet == null) {
                     sheet = workbook.createSheet("UserData");
+                    Row header = sheet.createRow(0);
+                    header.createCell(0).setCellValue("Email");
                 }
-                fis.close();
             } else {
-                // Create new file
                 workbook = new XSSFWorkbook();
                 sheet = workbook.createSheet("UserData");
 
@@ -138,57 +172,97 @@ public class abstractComponents {
                 header.createCell(0).setCellValue("Email");
             }
 
-            // Find next empty row
-            int lastRow = sheet.getLastRowNum();
-            int nextRow = (lastRow == 0 && sheet.getRow(0) == null) ? 0 : lastRow + 1;
-
+            int nextRow = sheet.getPhysicalNumberOfRows();
             Row row = sheet.createRow(nextRow);
             row.createCell(0).setCellValue(email);
 
-            FileOutputStream fos = new FileOutputStream(file);
-            workbook.write(fos);
+            try (FileOutputStream fos = new FileOutputStream(file)) {
+                workbook.write(fos);
+                fos.flush();
+            }
 
-            fos.close();
             workbook.close();
+
+            System.out.println("Excel updated at: " + file.getAbsolutePath());
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-	    
+
 
     // Get Random Email from Excel using Faker and insert in the email filed 
     
     public static String getRandomEmailFromExcelUsingFaker() {
-        String path = "/UserDetails.xlsx";
-        String email = "";
+    String path = System.getProperty("user.dir") + "/src/main/resources/UserDetails.xlsx";
+    String email = "";
 
-        try {
-            FileInputStream fis = new FileInputStream(path);
-            Workbook workbook = new XSSFWorkbook(fis);
-            Sheet sheet = workbook.getSheet("UserData");
+    try (FileInputStream fis = new FileInputStream(path);
+         Workbook workbook = new XSSFWorkbook(fis)) {
 
-            int lastRow = sheet.getLastRowNum(); // excludes header
+        Sheet sheet = workbook.getSheet("UserData");
+        int lastRow = sheet.getLastRowNum();
 
-            if (lastRow >= 1) {
-                Faker faker = new Faker();
-                int randomRow = faker.number().numberBetween(1, lastRow + 1);
+        if (lastRow >= 1) {
+            Faker faker = new Faker();
+            int randomRow = faker.number().numberBetween(1, lastRow + 1);
 
-                Row row = sheet.getRow(randomRow);
-                if (row != null && row.getCell(0) != null) {
-                    email = row.getCell(0).getStringCellValue();
-                }
+            Row row = sheet.getRow(randomRow);
+            if (row != null && row.getCell(0) != null) {
+                email = row.getCell(0).getStringCellValue().trim();
             }
-
-            workbook.close();
-            fis.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
         }
 
-        return email;
+    } catch (Exception e) {
+        e.printStackTrace();
     }
+
+    return email;
+}
+    
+    
+    // ----------------- Upload Random Image  ---------------------------- 
+    
+   public void uploadRandomImage(Locator trigger, Locator fileInput) {
+
+    String projectRoot = System.getProperty("user.dir");
+    File imagesDir = Paths.get(projectRoot, "UploadImages").toFile();
+
+    File[] files = imagesDir.listFiles((dir, name) ->
+            name.toLowerCase().endsWith(".jpg")
+         || name.toLowerCase().endsWith(".png")
+         || name.toLowerCase().endsWith(".jpeg"));
+
+    if (files == null || files.length == 0) {
+        throw new RuntimeException("No images found in: " + imagesDir.getAbsolutePath());
+    }
+
+    File randomFile = files[new Random().nextInt(files.length)];
+
+    // Best case: direct upload via hidden input (no OS dialog)
+    if (fileInput != null) {
+        fileInput.waitFor(new Locator.WaitForOptions()
+                .setState(WaitForSelectorState.ATTACHED));
+        fileInput.setInputFiles(randomFile.toPath());
+    }
+    // Fallback: camera / browse icon flow
+    else if (trigger != null) {
+        FileChooser chooser = page.waitForFileChooser(() -> {
+            trigger.scrollIntoViewIfNeeded();
+            trigger.click(new Locator.ClickOptions().setForce(true));
+        });
+        chooser.setFiles(randomFile.toPath());
+    } else {
+        throw new IllegalArgumentException("Either trigger or fileInput must be provided");
+    }
+
+    System.out.println("Uploaded file: " + randomFile.getName());
+}
+
+
+		
+	 
+
     
     // For Global Wait for Click
 
@@ -213,6 +287,21 @@ public class abstractComponents {
         locator.fill(value);
     }
 
+    // Wait for Element to be attached
+    
+    public void waitForElement(Locator locator) {
+        locator.waitFor(new Locator.WaitForOptions()
+                .setState(WaitForSelectorState.ATTACHED)
+                .setTimeout(60000));
+    }
+
+    // wait for Element to be visible
+    
+    public void waitForElementVisible(Locator locator) {
+        locator.waitFor(new Locator.WaitForOptions()
+                .setState(WaitForSelectorState.VISIBLE)
+                .setTimeout(60000));
+    }
 
     
     // scroll the Element 
@@ -223,6 +312,10 @@ public class abstractComponents {
     
     
     // Scroll by mouse
+    
+    public void scrollByMouse(int x, int y) {
+		page.mouse().move(0, 2000); // Move mouse to top to bottom
+	}
     
     
 

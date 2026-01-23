@@ -222,7 +222,7 @@ public class YouthRegistrationPage extends abstractComponents {
 		institutionInput.fill("s");
 		institutionInput.press("Enter");
 
-// Sport Section 
+        // Sport Section 
 		sportPlaceholder.click();
 		sportInput.fill("B");
 		sportInput.press("Enter");
