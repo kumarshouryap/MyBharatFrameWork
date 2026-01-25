@@ -25,7 +25,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -39,7 +39,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Default_suite" class="navigator-link">
-              <span class="suite-name border-passed">Default suite</span>
+              <span class="suite-name border-failed">Default suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -50,7 +50,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\hp\AppData\Local\Temp\testng-eclipse--615726415\testng-customsuite.xml</span>
+                    <span>C:\Users\hp\AppData\Local\Temp\testng-eclipse-1157355241\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -92,7 +92,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">4 methods,   4 passed</span>
+                    <span class="method-stats">6 methods, 1 failed,   5 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Default_suite" class="hide-methods failed suite-Default_suite"> (hide)</a> <!-- hide-methods failed suite-Default_suite -->
+                      <a href="#" panel-name="suite-Default_suite" class="show-methods failed suite-Default_suite"> (show)</a> <!-- show-methods failed suite-Default_suite -->
+                    </span>
+                    <div class="method-list-content failed suite-Default_suite">
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="YouthTest.Youth" class="method navigator-link" hash-for-method="LogoutYouth">LogoutYouth</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-Default_suite -->
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -101,6 +115,11 @@
                       <a href="#" panel-name="suite-Default_suite" class="show-methods passed suite-Default_suite"> (show)</a> <!-- show-methods passed suite-Default_suite -->
                     </span>
                     <div class="method-list-content passed suite-Default_suite">
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="YouthTest.Youth" class="method navigator-link" hash-for-method="loginYuth">loginYuth</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Default_suite" title="YouthTest.Youth" class="method navigator-link" hash-for-method="mybharatProfile">mybharatProfile</a> <!-- method navigator-link -->
@@ -133,12 +152,109 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Default_suite" class="panel Default_suite">
+          <div class="suite-Default_suite-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">YouthTest.Youth</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="LogoutYouth">
+                  </a> <!-- LogoutYouth -->
+                  <span class="method-name">LogoutYouth</span>
+                  <div class="stack-trace">com.microsoft.playwright.impl.TargetClosedError: Error {
+  message=&apos;Target page, context or browser has been closed
+  name=&apos;TargetClosedError
+  stack=&apos;TargetClosedError: Target page, context or browser has been closed
+    at PageDispatcher._dispose (C:\Users\hp\AppData\Local\Temp\playwright-java-6402847226773993066\package\lib\server\dispatchers\dispatcher.js:109:30)
+    at Page.&lt;anonymous&gt; (C:\Users\hp\AppData\Local\Temp\playwright-java-6402847226773993066\package\lib\server\dispatchers\pageDispatcher.js:71:12)
+    at Page.emit (node:events:508:28)
+    at Page._didClose (C:\Users\hp\AppData\Local\Temp\playwright-java-6402847226773993066\package\lib\server\page.js:164:10)
+    at CRPage.didClose (C:\Users\hp\AppData\Local\Temp\playwright-java-6402847226773993066\package\lib\server\chromium\crPage.js:130:16)
+    at CRBrowser._onDetachedFromTarget (C:\Users\hp\AppData\Local\Temp\playwright-java-6402847226773993066\package\lib\server\chromium\crBrowser.js:184:14)
+    at CRSession.emit (node:events:508:28)
+    at C:\Users\hp\AppData\Local\Temp\playwright-java-6402847226773993066\package\lib\server\chromium\crConnection.js:138:14
+}
+Call log:
+-   - waiting for locator(&quot;a[id=&apos;logout&apos;] h3[class=&apos;logout-fafa&apos;]&quot;) to be visible
+
+	at com.microsoft.playwright.impl.WaitableResult.get(WaitableResult.java:54)
+	at com.microsoft.playwright.impl.ChannelOwner.runUntil(ChannelOwner.java:138)
+	at com.microsoft.playwright.impl.Connection.sendMessage(Connection.java:131)
+	at com.microsoft.playwright.impl.ChannelOwner.sendMessage(ChannelOwner.java:124)
+	at com.microsoft.playwright.impl.FrameImpl.waitForSelectorImpl(FrameImpl.java:998)
+	at com.microsoft.playwright.impl.LocatorImpl.waitFor(LocatorImpl.java:646)
+	at Mybharat.AbstractsComponents.abstractComponents.globalWaitForClick(abstractComponents.java:265)
+	at Pageobjects.Logoutyouth.logoutyouth(Logoutyouth.java:22)
+	at YouthTest.Youth.LogoutYouth(Youth.java:193)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:741)
+	at org.testng.TestRunner.run(TestRunner.java:616)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+Caused by: com.microsoft.playwright.impl.TargetClosedError: Error {
+  message=&apos;Target page, context or browser has been closed
+  name=&apos;TargetClosedError
+  stack=&apos;TargetClosedError: Target page, context or browser has been closed
+    at PageDispatcher._dispose (C:\Users\hp\AppData\Local\Temp\playwright-java-6402847226773993066\package\lib\server\dispatchers\dispatcher.js:109:30)
+    at Page.&lt;anonymous&gt; (C:\Users\hp\AppData\Local\Temp\playwright-java-6402847226773993066\package\lib\server\dispatchers\pageDispatcher.js:71:12)
+    at Page.emit (node:events:508:28)
+    at Page._didClose (C:\Users\hp\AppData\Local\Temp\playwright-java-6402847226773993066\package\lib\server\page.js:164:10)
+    at CRPage.didClose (C:\Users\hp\AppData\Local\Temp\playwright-java-6402847226773993066\package\lib\server\chromium\crPage.js:130:16)
+    at CRBrowser._onDetachedFromTarget (C:\Users\hp\AppData\Local\Temp\playwright-java-6402847226773993066\package\lib\server\chromium\crBrowser.js:184:14)
+    at CRSession.emit (node:events:508:28)
+    at C:\Users\hp\AppData\Local\Temp\playwright-java-6402847226773993066\package\lib\server\chromium\crConnection.js:138:14
+}
+Call log:
+-   - waiting for locator(&quot;a[id=&apos;logout&apos;] h3[class=&apos;logout-fafa&apos;]&quot;) to be visible
+
+	at com.microsoft.playwright.impl.Connection.dispatch(Connection.java:259)
+	at com.microsoft.playwright.impl.Connection.processOneMessage(Connection.java:214)
+	at com.microsoft.playwright.impl.ChannelOwner.runUntil(ChannelOwner.java:136)
+	... 35 more
+
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Default_suite-class-failed -->
           <div class="suite-Default_suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
               <span class="class-name">YouthTest.Youth</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="loginYuth">
+                  </a> <!-- loginYuth -->
+                  <span class="method-name">loginYuth</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
                   <a name="mybharatProfile">
@@ -172,7 +288,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\hp\AppData\Local\Temp\testng-eclipse--615726415\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\hp\AppData\Local\Temp\testng-eclipse-1157355241\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -221,28 +337,36 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(4);
+data.addRows(6);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'youthEOTPV')
 data.setCell(0, 2, 'YouthTest.Youth')
-data.setCell(0, 3, 14508);
+data.setCell(0, 3, 34038);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'youthRegistrationFormFill')
+data.setCell(1, 1, 'LogoutYouth')
 data.setCell(1, 2, 'YouthTest.Youth')
-data.setCell(1, 3, 8799);
+data.setCell(1, 3, 10954);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'youthLandingPage')
+data.setCell(2, 1, 'youthRegistrationFormFill')
 data.setCell(2, 2, 'YouthTest.Youth')
-data.setCell(2, 3, 4939);
+data.setCell(2, 3, 9959);
 data.setCell(3, 0, 3)
 data.setCell(3, 1, 'mybharatProfile')
 data.setCell(3, 2, 'YouthTest.Youth')
-data.setCell(3, 3, 2158);
+data.setCell(3, 3, 9730);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'youthLandingPage')
+data.setCell(4, 2, 'YouthTest.Youth')
+data.setCell(4, 3, 5004);
+data.setCell(5, 0, 5)
+data.setCell(5, 1, 'loginYuth')
+data.setCell(5, 2, 'YouthTest.Youth')
+data.setCell(5, 3, 1609);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 30 seconds</span>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -257,18 +381,9 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">2 ignored methods</span>
+            <span class="header-content">0 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
-            <div class="ignored-class-div">
-              <span class="ignored-class-name">YouthTest.Youth</span>
-              <div class="ignored-methods-div">
-                <span class="ignored-method-name">loginYuth</span>
-                <br/>
-                <span class="ignored-method-name">LogoutYouth</span>
-                <br/>
-              </div> <!-- ignored-methods-div -->
-            </div> <!-- ignored-class-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="chronological-Default_suite" class="panel">
@@ -284,27 +399,39 @@ return data;
               </div> <!-- configuration-suite before -->
               <div class="configuration-class before">
                 <span class="method-name">initializeBrowser</span>
-                <span class="method-start">239 ms</span>
+                <span class="method-start">249 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <span class="method-name">youthLandingPage</span>
-                <span class="method-start">9032 ms</span>
+                <span class="method-start">11490 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">youthEOTPV</span>
-                <span class="method-start">13977 ms</span>
+                <span class="method-start">16497 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">youthRegistrationFormFill</span>
-                <span class="method-start">28486 ms</span>
+                <span class="method-start">50536 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">mybharatProfile</span>
-                <span class="method-start">37287 ms</span>
+                <span class="method-start">60496 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">loginYuth</span>
+                <span class="method-start">70229 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">LogoutYouth</span>
+                <span class="method-start">71839 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-suite after">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">flushReport</span>
-                <span class="method-start">39472 ms</span>
+                <span class="method-start">82858 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

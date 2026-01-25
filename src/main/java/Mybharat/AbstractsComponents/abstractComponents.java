@@ -3,8 +3,12 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Properties;
 import java.util.Random;
+import java.util.Set;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -16,6 +20,7 @@ import com.github.javafaker.Faker;
 import com.microsoft.playwright.FileChooser;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.SelectOption;
 import com.microsoft.playwright.options.WaitForSelectorState;
 
 import java.io.File;
@@ -81,28 +86,18 @@ public class abstractComponents {
         String value = dropdown.locator("option").nth(randomIndex).getAttribute("value");
         dropdown.selectOption(value);
     }
-
-    // Select radio button in group 
     
-    public void selectRadioByValue(String name, String value) {
-        Locator radio = page.locator("input[type='radio'][name='" + name + "'][value='" + value + "']");
-        selectRadioButton(radio);
+   // 
+     
+    public void selectRandomFromDropdown(Locator dropdown) {
+    List<String> options = dropdown.locator("option").allTextContents();
+    options.remove(0); // remove "Select"
+
+    int randomIndex = new Random().nextInt(options.size()) + 1;
+    dropdown.selectOption(new SelectOption().setIndex(randomIndex));
+
     }
     
-    // Generic method to select a radio button
-    
-    public void selectRadioButton(Locator radioButton) {
-        if (!radioButton.isVisible()) {
-            throw new RuntimeException("Radio button is not visible");
-        }
-        if (!radioButton.isEnabled()) {
-            throw new RuntimeException("Radio button is not enabled");
-        }
-
-        if (!radioButton.isChecked()) {
-            radioButton.check();   // Playwright-native way
-        }
-    }
     
     public void selectFirstFromTypeSearch(Page page, String inputLocator, String listBoxLocator, String triggerText) {
 

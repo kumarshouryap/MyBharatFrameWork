@@ -17,6 +17,7 @@ public class ExtentReport {
 			extentreport = new ExtentReports();
 			extentreport.attachReporter(sparkreporter);
 			extentreport.setSystemInfo("Tester", "Manoj Kumar");
+			extentreport.setSystemInfo("Enviroment", "Production");
 
 		}
 		return extentreport;

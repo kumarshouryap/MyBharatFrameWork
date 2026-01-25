@@ -6,9 +6,9 @@
       <class name="YouthTest.Youth">
         <methods>
           <include name="flushReport"/>
+          <include name="LogoutYouth"/>
           <include name="initializeBrowser"/>
           <include name="SetupExtentReport"/>
-          <include name="mybharatProfile"/>
         </methods>
       </class> <!-- YouthTest.Youth -->
     </classes>
