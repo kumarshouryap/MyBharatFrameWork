@@ -9,9 +9,9 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 import Mybharat.AbstractsComponents.abstractComponents;
 
 public class Loginyouth extends abstractComponents {
-	
+
 	private static final String ExcelUtils = null;
-	
+
 	Page page;
 	Locator signinlink;
 	Locator loginWithPassword;
@@ -21,55 +21,56 @@ public class Loginyouth extends abstractComponents {
 	Locator signinbutton;
 
 	public Loginyouth(Page page) {
-		
+
 		super(page);
 		this.page = page;
-		
-				
-		signinlink= page.locator("//span[normalize-space()='Sign In']");
+
+		signinlink = page.locator("//span[normalize-space()='Sign In']");
 		loginWithPassword = page.locator("#login_with_pwd");
-		
+
 		emailidinput = page.locator("#username");
 		passwordinput = page.locator("#password");
-		
+
 		iconSenttoTermsOfUse = page.locator("//input[@id='consentCheck2']");
-		
+
 		signinbutton = page.locator("//button[@id='signInButton']");
-		
-		
-		
-		
-		
 	}
-	
+
 	public void loginYouth() {
-		
-		String email = abstractComponents.getRandomEmailFromExcelUsingFaker().trim();
-	    String password = getProperty("password").trim();
 
-	    globalWaitForClick(signinlink);
-	    globalWaitForClick(loginWithPassword);
-	    
+		// Open login flow
+		globalWaitForClick(signinlink);
+		globalWaitForClick(loginWithPassword);
 
-	    globalWaitForFill(emailidinput, email);
-	    globalWaitForFill(passwordinput, password);
+		// Fetch data
+		String email = abstractComponents.getRandomEmailFromExcelUsingFaker();
+		String password = getProperty("password"); // already throws if missing
 
-	    if (!iconSenttoTermsOfUse.isChecked()) {
-	        iconSenttoTermsOfUse.check();
-	    }
+		// Validate email
+		if (email == null || email.trim().isEmpty()) {
+			throw new RuntimeException("Email is missing from Excel/Faker generation.");
+		}
 
-	    // Wait until button becomes enabled
-	    signinbutton.waitFor(new Locator.WaitForOptions()
-	            .setState(WaitForSelectorState.ATTACHED));
+		email = email.trim();
+		password = password.trim();
 
-	    assertThat(signinbutton).isEnabled();
-	    signinbutton.click();
+		// Fill credentials
+		globalWaitForFill(emailidinput, email);
+		globalWaitForFill(passwordinput, password);
+
+		System.out.println("Email = [" + email + "]");
+		System.out.println("Password from properties = [" + password + "]");
+
+		// Accept terms if not already checked
+		if (!iconSenttoTermsOfUse.isChecked()) {
+			iconSenttoTermsOfUse.check();
+		}
+
+		// Ensure button is ready
+		signinbutton.waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.VISIBLE));
+
+		assertThat(signinbutton).isEnabled();
+		signinbutton.click();
 	}
 
-		
-		
-	}
-	
-	
-
-
+}

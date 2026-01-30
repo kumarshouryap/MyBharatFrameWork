@@ -29,9 +29,28 @@
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
 			<version>7.11.0</version>
-
-			<scope>test</scope>
+			<!--<scope>test</scope>-->
 		</dependency>
+		
+		 <!-- Apache POI (Excel) -->
+    <dependency>
+        <groupId>org.apache.poi</groupId>
+        <artifactId>poi</artifactId>
+        <version>5.2.5</version>
+    </dependency>
+    
+    <dependency>
+        <groupId>org.apache.poi</groupId>
+        <artifactId>poi-ooxml</artifactId>
+        <version>5.2.5</version>
+    </dependency>
+    
+       <!-- Java Faker -->
+    <dependency>
+        <groupId>com.github.javafaker</groupId>
+        <artifactId>javafaker</artifactId>
+        <version>1.0.2</version>
+    </dependency>
 
 		<!-- Log4j2 -->
 		<dependency>
@@ -62,12 +81,12 @@
 		<!-- ❌ REMOVE PlaywrightAutomation dependency FOR NOW -->
 		<!-- This dependency DOES NOT EXIST locally -->
 
-		<dependency>
+		<!--<dependency>
 			<groupId>MYBharat</groupId>
 			<artifactId>PlaywrightAutomation</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
-
+-->
 		<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
 		<dependency>
 			<groupId>com.aventstack</groupId>

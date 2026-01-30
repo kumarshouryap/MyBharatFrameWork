@@ -3,14 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="YouthTest.Youth">
+      <class name="VoFlowYouthSideTest.VoYouthSideTest">
         <methods>
           <include name="flushReport"/>
-          <include name="LogoutYouth"/>
+          <include name="verifyVolunteerFlow"/>
           <include name="initializeBrowser"/>
           <include name="SetupExtentReport"/>
         </methods>
-      </class> <!-- YouthTest.Youth -->
+      </class> <!-- VoFlowYouthSideTest.VoYouthSideTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

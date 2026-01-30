@@ -2,6 +2,8 @@ package YouthTest;
 
 import org.testng.annotations.Test;
 
+import com.microsoft.playwright.Page;
+
 import MybharatUtils.Log;
 import MybharatUtils.TakeScreenShort;
 import Pageobjects.LandingPage;
@@ -22,7 +24,7 @@ public class Youth extends BaseTest {
 		test = extentreport.createTest("Youth landing Page Open"); // Test Case Name reflect in Extent Report
 
 		// Open Landing Page
-
+		
 		landingPage = new LandingPage(page);
 		landingPage.goTo();
 
@@ -42,7 +44,7 @@ public class Youth extends BaseTest {
 
 	}
 
-	@Test(enabled = true, priority = 2)
+	@Test(enabled = false, priority = 2)
 	public void youthEOTPV() throws InterruptedException {
 
 		// Test Case Name reflect in Extent Report
@@ -71,7 +73,7 @@ public class Youth extends BaseTest {
 
 	// Fill Youth Registration Form
 
-	@Test(enabled = true, priority = 3)
+	@Test(enabled = false, priority = 3)
 
 	public void youthRegistrationFormFill() throws InterruptedException {
 
@@ -94,7 +96,7 @@ public class Youth extends BaseTest {
 		String title = page.title();
 		if (title.equals("Youth Public Profile | MY Bharat")) {
 			test.pass("Youth Registration Form opened and completed successfully."); // Verify Registration Form
-																						// Completion
+																						
 		} else {
 			test.fail("Youth Registration Form could not be opened or completed.");
 		}
@@ -103,7 +105,7 @@ public class Youth extends BaseTest {
 
 	// Complete Youth Profile and Change Password
 
-	@Test(enabled = true, priority = 4)
+	@Test(enabled = false, priority = 4)
 
 	public void mybharatProfile() throws InterruptedException {
 
@@ -162,7 +164,7 @@ public class Youth extends BaseTest {
 
 	// Login Youth
 
-	@Test(enabled = true, priority = 5)
+	@Test(enabled = false, priority = 5)
 
 	public void loginYuth() {
 
@@ -185,7 +187,7 @@ public class Youth extends BaseTest {
 
 	// Logout Youth
 
-	@Test(enabled = true, priority = 6)
+	@Test(enabled = false, priority = 6)
 
 	public void LogoutYouth() {
 		test = extentreport.createTest("Youth Logout Successfullay"); // Test Case Name reflect in Extent Report

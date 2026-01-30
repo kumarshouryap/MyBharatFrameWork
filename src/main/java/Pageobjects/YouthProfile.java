@@ -66,7 +66,7 @@ public class YouthProfile extends abstractComponents {
 	Locator certificationDownloadInPng;
 	Locator certificationDownloadInPdf;
 	Locator clickonCrossButton;
-	
+
 	Locator basicInfo;
 	Locator changePassword;
 
@@ -208,6 +208,7 @@ public class YouthProfile extends abstractComponents {
 		System.out.println("Email extracted from profile and written to Excel successfully.");
 	}
 
+	
 	// Scroll & open Change Password pop-up
 
 	public void changePassword() {
@@ -218,6 +219,7 @@ public class YouthProfile extends abstractComponents {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 		changePassword.click();
 
 		// Scope everything inside the modal
@@ -308,7 +310,7 @@ public class YouthProfile extends abstractComponents {
 		inputValueInTools.fill("Selenium, Playwright, Maven, TestNG, Java, Git, Jenkins");
 
 		inputProfessionalIntroductionVideoUrl.fill("https://www.youtube.com/watch?v=QZSlDNgi-eQ");
-		
+
 		globalWaitForClick(selectSocialMediaType);
 
 		selectSocialMediaType.selectOption(new SelectOption().setIndex(3));
