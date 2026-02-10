@@ -29,8 +29,19 @@ public class VoYouthSideTest extends BaseTest {
     	
         // Open Volunteer for Bharat Page
         
+        test = extentreport.createTest("VO Youth Side Flow like apply on VO upload Images");
+        
         VO volunteer = new VO(page);
         volunteer.openVolunteerForBharat();
+        
+        String title = page.title();
+    	if (title.equals("Events | MYBharat"))
+    		
+    	{
+			test.pass("Event's Page Successfully opened"); 
+		} else {
+			test.fail("Failed to open Event's Page"); 
+		}
         
        
              

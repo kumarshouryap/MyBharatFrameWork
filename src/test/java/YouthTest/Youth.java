@@ -6,6 +6,8 @@ import com.microsoft.playwright.Page;
 
 import MybharatUtils.Log;
 import MybharatUtils.TakeScreenShort;
+import Pageobjects.CVBuilder;
+import Pageobjects.ExperientialLearning;
 import Pageobjects.LandingPage;
 import Pageobjects.Loginyouth;
 import Pageobjects.Logoutyouth;
@@ -44,7 +46,7 @@ public class Youth extends BaseTest {
 
 	}
 
-	@Test(enabled = false, priority = 2)
+	@Test(enabled = true, priority = 2)
 	public void youthEOTPV() throws InterruptedException {
 
 		// Test Case Name reflect in Extent Report
@@ -73,7 +75,7 @@ public class Youth extends BaseTest {
 
 	// Fill Youth Registration Form
 
-	@Test(enabled = false, priority = 3)
+	@Test(enabled = true, priority = 3)
 
 	public void youthRegistrationFormFill() throws InterruptedException {
 
@@ -164,7 +166,7 @@ public class Youth extends BaseTest {
 
 	// Login Youth
 
-	@Test(enabled = false, priority = 5)
+	@Test(enabled = false, priority = 2)
 
 	public void loginYuth() {
 
@@ -200,4 +202,27 @@ public class Youth extends BaseTest {
 			test.fail("Youth Logout Failed");
 		}
 	}
+	
+	// CV Builder creation
+	
+	@Test(enabled =false, priority = 3)
+	
+	public void CVBuilderCreation() {
+		
+		CVBuilder youthcreatecv = new CVBuilder(page);
+		youthcreatecv.createCVBuilder();
+		
+	}
+	
+	// On ELP Applay by youth
+	
+	@Test(enabled= false, priority = 3)
+	
+	public void applayOnELP() {
+		
+		ExperientialLearning elpApplay1 = new ExperientialLearning(page);
+		elpApplay1.elpApplay();
+	}
+	
+	
 }

@@ -41,16 +41,29 @@ public void initializeBrowser() {
     Log.info("---------------Create Playwright instance ------------");
     playwright = Playwright.create();
 
-    // Load properties
+ // Create Properties object to store key-value pairs from .properties file
     Properties props = new Properties();
+
     try (FileInputStream fis = new FileInputStream(
-            System.getProperty("user.dir") + "/src/main/resources/GlobalData.properties")) {
+            // Get current project directory dynamically
+            System.getProperty("user.dir") 
+            // Path of properties file inside resources folder
+            + "/src/main/resources/GlobalData.properties")) {
+
+        // Load all key-value pairs from properties file into props object
         props.load(fis);
+
     } catch (Exception e) {
+        
+        // If file not found or any error occurs, throw runtime exception
+        // This will stop execution and show the actual error
         throw new RuntimeException(e);
     }
 
+    // Read "browser" value from properties file
+    // If browser key is not present, default value will be "chrome"
     String browserName = props.getProperty("browser", "chrome");
+
     Log.info("Launching browser: " + browserName);
 
     switch (browserName.toLowerCase()) {
@@ -78,7 +91,15 @@ public void initializeBrowser() {
             break;
     }
 
-    context = browser.newContext();
+  
+ // Create a new browser context and enable file download support.
+ // setAcceptDownloads(true) allows Playwright to handle and save downloaded files.
+ // Without this, page.waitForDownload() will not work properly.
+    
+ context = browser.newContext(
+         new Browser.NewContextOptions().setAcceptDownloads(true)
+ );
+ 
     page = context.newPage();
     landingPage = new LandingPage(page);
 }

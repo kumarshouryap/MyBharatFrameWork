@@ -449,14 +449,31 @@ public void uploadRandomImagesWithFileChooser(Locator trigger, int howMany) {
     
     // For Global Wait for Click
 
-    public void globalWaitForClick(Locator locator) {
-        locator.waitFor(new Locator.WaitForOptions()
-                .setState(WaitForSelectorState.VISIBLE)
-                .setTimeout(60000));
+//This method waits properly and safely clicks on any element
+public void globalWaitForClick(Locator locator) {
 
-        locator.scrollIntoViewIfNeeded();
-        locator.click();
-    }
+ // Wait until the element becomes visible in the DOM
+ // Visible means: present + displayed (not hidden)
+ locator.waitFor(new Locator.WaitForOptions()
+         .setState(WaitForSelectorState.VISIBLE));  
+
+ // Wait until the element is enabled (not disabled)
+ // This prevents clicking too early when button is still disabled
+ page.waitForCondition(() ->
+         locator.isEnabled() && locator.isVisible()
+ );
+
+ // Scroll the element into view if it is outside the visible area
+ // This ensures click does not fail due to element being off-screen
+ locator.scrollIntoViewIfNeeded();
+
+ // Perform the actual click action
+ // Timeout ensures Playwright keeps retrying click if needed
+ locator.click(new Locator.ClickOptions()
+         .setTimeout(60000));
+}
+
+
 
     
     // Global Wait for Fill
